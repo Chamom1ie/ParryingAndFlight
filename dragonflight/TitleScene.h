@@ -1,7 +1,7 @@
 #pragma once
 enum class MENU
 {
-	FIRST, START, INFO, QUIT, END
+	FIRST, START, QUIT, END
 };
 enum class KEY
 {
