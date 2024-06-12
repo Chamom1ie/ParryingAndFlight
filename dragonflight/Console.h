@@ -22,4 +22,5 @@ public:
 	void LockResize();
 	COORD GetConsoleResolution();
 	void SetFontSize(UINT _weight, UINT _fontx, UINT _fonty);
+	
 };

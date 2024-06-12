@@ -3,7 +3,7 @@
 
 void Console::Init()
 {
-	system("title DragonFlight | mode con cols=75 lines=55");
+	system("title DragonFlight | mode con cols=50 lines=80");
 	CursorVis(true, 1);
 	LockResize();
 	SetFontSize(FW_REGULAR, 14, 14);
@@ -130,6 +130,8 @@ void Console::SetFontSize(UINT _weight, UINT _fontx, UINT _fonty)
 
 	SetCurrentConsoleFontEx(hout, false, &font);
 }
+
+
 #pragma region 0417
 /*SetConsoleDisplayMode
 (GetStdHandle(STD_OUTPUT_HANDLE),
