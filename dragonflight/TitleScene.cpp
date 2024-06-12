@@ -7,7 +7,7 @@
 #include "console.h"
 using namespace std;
 
-string TitleText[3] = { "게임 시작", "게임 정보", "게임 종료" };
+string TitleText[3] = { "게임 시작", "게임 종료" };
 void TitleScene::TitleRender() {
 	Console console{};
 	int prevMode = _setmode(_fileno(stdout), _O_U16TEXT);
@@ -59,9 +59,6 @@ bool TitleScene::Title()
 			EnterAnimation();
 			return true;
 			break;
-		case MENU::INFO:
-			InfoRender();
-			break;
 		case MENU::QUIT:
 			return false;
 			break;
@@ -78,7 +75,7 @@ MENU TitleScene::MenuRender()
 	int y = resolution.Y / 3;
 
 
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		console.GotoxyDouble(x, y + i);
 		cout << TitleText[i];
@@ -212,9 +209,6 @@ bool TitleScene::Run()
 		case MENU::START:
 			EnterAnimation();
 			return true;
-			break;
-		case MENU::INFO:
-			InfoRender();
 			break;
 		case MENU::QUIT:
 			return false;
