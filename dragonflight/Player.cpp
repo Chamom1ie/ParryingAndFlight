@@ -1,29 +1,36 @@
 #include <Windows.h>
 #include <algorithm>
+#include <fstream>
 #include "Player.h"
 #include "Console.h"
 
 void Player::Movement()
 {
-	newX = x;
-	newY = y;
+	_newtpos = _tpos;
 	if (GetAsyncKeyState(VK_UP) & 0x8000)
-		--newY;
+		--_newtpos.y;
 	if (GetAsyncKeyState(VK_DOWN) & 0x8000)
-		++newY;
+		++_newtpos.y;
 	if (GetAsyncKeyState(VK_LEFT) & 0x8000)
-		--newX;
+		--_newtpos.x;
 	if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
-		++newX;
+		++_newtpos.x;
 
 
-	newX = std::clamp(newX,0,MAP_WIDTH - 2);
-	newY = std::clamp(newY,0,MAP_HEIGHT - 1);
+	// Clamp 처리
+	_newtpos.x = std::clamp(_newtpos.x, 0, MAP_WIDTH - 2);
+	_newtpos.y = std::clamp(_newtpos.y, 0, MAP_HEIGHT - 1);
 
-	if (arrMap[newY][newX] != (char)OBJ_TYPE::Wall) {
-		x = newX;
-		y = newY;
-	}
+
+	// 최종 갱신
+	if (arrMap[_newtpos.y][_newtpos.x]
+		!= (char)OBJ_TYPE::Wall)
+		_tpos = _newtpos;
+}
+
+void Player::Fire()
+{
+
 }
 
 void Player::Update()
@@ -35,46 +42,38 @@ void Player::Update()
 
 void Player::Render()
 {
-	for (int i = 0;i < MAP_HEIGHT;++i) {
-		for (int j = 0;j < MAP_WIDTH;++j) {
-			if (x == j && y == i) {
+	Console console;
+	console.Gotoxy(0, 0);
+	for (int i = 0; i < MAP_HEIGHT; ++i)
+	{
+		for (int j = 0; j < MAP_WIDTH; ++j)
+		{
+			if (_tpos.x == j && _tpos.y == i)
 				cout << "A";
-			}
-			else if (arrMap[j][i] == (char)OBJ_TYPE::Wall) {
-				cout << "◆";
-			}
-			else if (arrMap[j][i] == (char)OBJ_TYPE::Road) {
-				cout << " ";
-			}
+			else if (arrMap[i][j] == (char)OBJ_TYPE::Wall)
+				cout << "■";
+			else if (arrMap[i][j] == (char)OBJ_TYPE::Road)
+				cout << "  ";
 		}
 		cout << endl;
 	}
 }
 
-bool Player::Init()
+void Player::Init()
 {
-	x = MAP_WIDTH / 2;
-	y = MAP_HEIGHT;
+	_tpos.x = MAP_WIDTH / 2;
+	_tpos.y = MAP_HEIGHT-2;
 
-	strcpy_s(arrMap[0], "00000000000000000000");
-	strcpy_s(arrMap[1], "01111111111111111110");
-	strcpy_s(arrMap[2], "01111111111111111110");
-	strcpy_s(arrMap[3], "01111111111111111110");
-	strcpy_s(arrMap[4], "01111111111111111110");
-	strcpy_s(arrMap[5], "01111111111111111110");
-	strcpy_s(arrMap[6], "01111111111111111110");
-	strcpy_s(arrMap[7], "01111111111111111110");
-	strcpy_s(arrMap[8], "01111111111111111110");
-	strcpy_s(arrMap[9], "01111111111111111110");
-	strcpy_s(arrMap[10],"01111111111111111110");
-	strcpy_s(arrMap[11],"01111111111111111110");
-	strcpy_s(arrMap[12],"01111111111111111110");
-	strcpy_s(arrMap[13],"01111111111111111110");
-	strcpy_s(arrMap[14],"01111111111111111110");
-	strcpy_s(arrMap[15],"01111111111111111110");
-	strcpy_s(arrMap[16],"01111111111111111110");
-	strcpy_s(arrMap[17],"01111111111111111110");
-	strcpy_s(arrMap[18],"01111111111111111110");
-	strcpy_s(arrMap[19],"00000000000000000000");
-	return false;
+	std::fstream readMap("stage.txt");
+	if (readMap.is_open()) {
+		for (int i = 0;i < MAP_HEIGHT;++i) {
+			//다시 getline으로 파일을 읽을때 기존꺼
+			//clear해줘야함. 여러 스테이지일 때
+			//readMap.clear();
+			readMap.getline(arrMap[i], MAP_WIDTH);
+			if (readMap.fail()) {
+				std::cout << "file error" << endl;
+			}
+		}
+	}
 }
