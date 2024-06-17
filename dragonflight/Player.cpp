@@ -3,7 +3,7 @@
 #include <fstream>
 #include "Player.h"
 #include "Console.h"
-
+//#include "Bullet.h"
 void Player::Movement()
 {
 	_newtpos = _tpos;
@@ -28,15 +28,20 @@ void Player::Movement()
 		_tpos = _newtpos;
 }
 
-void Player::Fire()
-{
-
-}
+//void Player::Fire()
+//{
+//	Bullet newBullet;
+//	newBullet.Init(_tpos);
+//}
 
 void Player::Update()
 {
 	Movement();
 	
+	/*if (GetAsyncKeyState(VK_SPACE) & 0x8000) {
+		Fire();
+	}*/
+
 	Sleep(100);
 }
 

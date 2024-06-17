@@ -1,5 +1,6 @@
 #pragma once
 #include "define.h"
+#include <vector>
 enum class COLOR
 {
 	BLACK = 0, BLUE, GREEN, SKYBLUE, RED,

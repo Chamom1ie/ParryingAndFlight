@@ -20,7 +20,7 @@ class Player
 {
 private:
 	void Movement();
-	void Fire();
+	//void Fire();
 public:
 	void Update();
 	void Render();

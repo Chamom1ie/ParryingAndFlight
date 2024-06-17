@@ -2,6 +2,8 @@
 //게임매니저
 #include "Console.h"
 #include "define.h"
+#include "Bullet.h"
+
 class Core
 {
 private:
@@ -20,6 +22,7 @@ public:
 	{
 		SAFE_DELETE(m_pInst);
 	}
+	std::vector<Bullet> bullets = {};
 private:
 	static Core* m_pInst;
 };
