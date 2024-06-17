@@ -4,7 +4,7 @@
 void Console::Init()
 {
 	system("title DragonFlight | mode con cols=75 lines=55");
-	CursorVis(true, 1);
+	CursorVis(false, 100);
 	LockResize();
 	SetFontSize(FW_REGULAR, 14, 14);
 }
