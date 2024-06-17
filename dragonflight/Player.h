@@ -1,9 +1,7 @@
 #pragma once
 const int MAP_WIDTH = 21;
 const int MAP_HEIGHT = 20;
-enum class OBJ_TYPE {
-	Wall = '0',Road
-};
+
 typedef struct _tagpos
 {
 	int x;
@@ -16,11 +14,16 @@ typedef struct _tagpos
 			return false;
 	}
 }POS, * PPOS;
+
+enum class OBJ_TYPE {
+	Wall = '0',Road
+};
+
 class Player
 {
 private:
 	void Movement();
-	//void Fire();
+	void Fire();
 public:
 	void Update();
 	void Render();

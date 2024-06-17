@@ -4,10 +4,10 @@
 
 void Bullet::Move()
 {
-	_tPos.y--;
-	if (_tPos.y == 0) {
-		
-	}
+	//_tPos.y--;
+	//if (//_tPos.y == 0) {
+	//	
+	//}
 	Sleep(100);
 }
 
@@ -20,8 +20,15 @@ void Bullet::Render()
 {
 }
 
-void Bullet::Init(POS currentPos)
+void Bullet::Init(int currentX, int currentY)
 {
-	
-	_tPos = currentPos;
+	_tposX = currentX;
+	_tposY = currentY;
+	//Core::bullets;
 }
+
+//void Bullet::Init(POS currentPos)
+//{
+//	
+//	_tPos = currentPos;
+//}

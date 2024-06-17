@@ -3,7 +3,7 @@
 #include <fstream>
 #include "Player.h"
 #include "Console.h"
-//#include "Bullet.h"
+#include "Bullet.h"
 void Player::Movement()
 {
 	_newtpos = _tpos;
@@ -28,11 +28,11 @@ void Player::Movement()
 		_tpos = _newtpos;
 }
 
-//void Player::Fire()
-//{
-//	Bullet newBullet;
-//	newBullet.Init(_tpos);
-//}
+void Player::Fire()
+{
+	Bullet newBullet;
+	//newBullet.Init(_tpos);
+}
 
 void Player::Update()
 {
