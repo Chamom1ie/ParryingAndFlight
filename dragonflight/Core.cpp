@@ -21,18 +21,27 @@ bool Core::Init() //여기서 게임 진행?
 	m_player.Init();
 	return true;
 }
+void Core::Update()
+{
+	m_player.Update();
+	for (auto& i : bullets) {
+		i.Update();
+	}
+}
+
+void Core::Render()
+{
+	MapManager::GetInst()->Render(m_player);
+	m_player.Render();
+}
 
 void Core::Run()
 {
 	while (true)
 	{
-		m_player.Update();
-		for (auto& i : bullets) {
-			i.Update();
-		}
-		MapManager::GetInst()->Render(m_player);
-		m_player.Render();
-		// Update()
-		// Render()
+		Update();
+		Render();
 	}
 }
+
+

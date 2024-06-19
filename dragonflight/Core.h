@@ -12,6 +12,8 @@ private:
 public:
 	bool Init();
 	void Run();
+	void Update();
+	void Render();
 public:
 	static Core* GetInst()
 	{

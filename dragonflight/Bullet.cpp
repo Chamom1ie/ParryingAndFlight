@@ -5,10 +5,13 @@
 
 void Bullet::Move()
 {
-	_newtpos;
-	//if (//_tPos.y == 0) {
-	//	
-	//}
+	if (isdie) {
+		return;
+	}
+	_newtpos.y--;
+	if (_newtpos.y == 0) {
+		isdie = true;
+	}
 	/*if (_newtpo) {
 		isdie == true;
 	}
