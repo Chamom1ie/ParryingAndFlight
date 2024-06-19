@@ -1,5 +1,6 @@
 class Pos
 {
+public:
 	int x;
 	int y;
 	bool operator ==(const Pos& _pos)

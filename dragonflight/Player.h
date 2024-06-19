@@ -1,5 +1,6 @@
 #pragma once
 #include"Console.h"
+#include "Pos.h"
 
 
 enum class OBJ_TYPE {
@@ -15,6 +16,6 @@ public:
 	void Update();
 	void Render();
 	void Init();
-	POS _tpos,_newtpos;
+	Pos _tpos,_newtpos;
 };
 
