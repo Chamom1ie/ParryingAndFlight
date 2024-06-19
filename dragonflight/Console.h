@@ -8,18 +8,7 @@ enum class COLOR
 	LIGHT_GREEN, MINT, LIGHT_RED, LIGHT_VIOLET,
 	LIGHT_YELLOW, WHITE, END
 };
-typedef struct _tagpos
-{
-	int x;
-	int y;
-	bool operator ==(const _tagpos& _pos)
-	{
-		if (x == _pos.x && y == _pos.y)
-			return true;
-		else
-			return false;
-	}
-}POS, * PPOS;
+
 class Console {
 public:
 	void Init();

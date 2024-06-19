@@ -1,6 +1,5 @@
-#include"Console.h"
-#include "Bullet.h"
 #include "MapManager.h"
+#include "Bullet.h"
 
 
 void Bullet::Move()
@@ -12,11 +11,7 @@ void Bullet::Move()
 	if (_newtpos.y == 0) {
 		isdie = true;
 	}
-	/*if (_newtpo) {
-		isdie == true;
-	}
 	Sleep(1);
-	if()*/
 }
 
 void Bullet::Update()

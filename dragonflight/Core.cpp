@@ -1,4 +1,5 @@
 #include "Core.h"
+#include "Pos.h"
 #include "Console.h"
 #include "TitleScene.h"
 #include "Player.h"
@@ -8,7 +9,7 @@
 using std::vector;
 Core* Core::m_pInst = nullptr;
 Player m_player;
-vector<Enemy> m_enemys;
+//vector<Enemy> m_enemys;
 bool Core::Init() //여기서 게임 진행?
 {
 	Console m_console{};

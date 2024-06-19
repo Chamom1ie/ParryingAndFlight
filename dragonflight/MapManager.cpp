@@ -1,6 +1,7 @@
 #include <fstream>
 #include"Core.h"
 #include "MapManager.h"
+#include"Pos.h"
 MapManager* MapManager::m_pInst = nullptr;
 
 void MapManager::Init()
@@ -29,7 +30,7 @@ void MapManager::Render(Player player)
 		{
 			if (player._tpos.x == j && player._tpos.y == i)
 				cout << "A";
-			else if (MapManager::GetInst()->arrMap[i][j] == (char)OBJ_TYPE::Wall)
+			else if (MapManager::GetInst()->arrMap[i][j] == (char)OBJ_TYPE::End)
 				cout << "бс";
 			else if (MapManager::GetInst()->arrMap[i][j] == (char)OBJ_TYPE::Road)
 				cout << "  ";

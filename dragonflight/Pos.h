@@ -1,3 +1,4 @@
+#pragma once
 class Pos
 {
 public:
@@ -10,4 +11,5 @@ public:
 		else
 			return false;
 	}
-}POS, * PPOS;
+};
+extern Pos POS, * PPOS;

@@ -3,10 +3,6 @@
 #include "Pos.h"
 
 
-enum class OBJ_TYPE {
-	Wall = '0',Road
-};
-
 class Player
 {
 private:
@@ -16,6 +12,9 @@ public:
 	void Update();
 	void Render();
 	void Init();
-	Pos _tpos,_newtpos;
+	
+	
+	
+	Pos _tpos, _newtpos;
 };
 

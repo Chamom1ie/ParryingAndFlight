@@ -1,5 +1,5 @@
 #pragma once
-#include"Console.h"
+
 #include"Pos.h"
 class Bullet
 {
@@ -9,9 +9,8 @@ public:
 	void Update();
 	void Render();
 	void Init(Pos currentPos);
-	Pos _tPos;
+	Pos _tPos, _newtpos;
 private:
-	Pos _newtpos;
 	bool isdie;
 };
 

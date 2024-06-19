@@ -24,7 +24,7 @@ void Player::Movement()
 
 	// 최종 갱신
 	if (MapManager::GetInst()->arrMap[_newtpos.y][_newtpos.x]
-		!= (char)OBJ_TYPE::Wall)
+		!= (char)OBJ_TYPE::End)
 		_tpos = _newtpos;
 }
 

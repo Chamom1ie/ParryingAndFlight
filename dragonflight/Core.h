@@ -4,7 +4,6 @@
 #include "define.h"
 #include "Bullet.h"
 
-
 class Core
 {
 private:
