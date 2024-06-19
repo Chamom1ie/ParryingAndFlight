@@ -1,14 +1,18 @@
 #include"Console.h"
-#include "Core.h"
 #include "Bullet.h"
+#include "MapManager.h"
 
 void Bullet::Move()
 {
-	//_tPos.y--;
+	_newtpos.y--;
 	//if (//_tPos.y == 0) {
 	//	
 	//}
-	Sleep(100);
+	if (_newtpos.y == 0) {
+		isdie == true;
+	}
+	Sleep(1);
+	if()
 }
 
 void Bullet::Update()
@@ -18,17 +22,11 @@ void Bullet::Update()
 
 void Bullet::Render()
 {
+	cout << "£ª";
 }
 
-void Bullet::Init(int currentX, int currentY)
+void Bullet::Init(POS currentPos)
 {
-	_tposX = currentX;
-	_tposY = currentY;
-	//Core::bullets;
+	_tPos = currentPos;
+	isdie = false;
 }
-
-//void Bullet::Init(POS currentPos)
-//{
-//	
-//	_tPos = currentPos;
-//}

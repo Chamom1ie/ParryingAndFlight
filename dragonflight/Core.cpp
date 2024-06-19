@@ -2,6 +2,7 @@
 #include "Console.h"
 #include "TitleScene.h"
 #include "Player.h"
+#include "MapManager.h"
 Core* Core::m_pInst = nullptr;
 Player m_player;
 bool Core::Init() //여기서 게임 진행?
@@ -10,6 +11,7 @@ bool Core::Init() //여기서 게임 진행?
 	TitleScene m_titleScene{};
 	m_console.Init();
 	m_titleScene.Run();
+	MapManager::GetInst()->Init();
 
 	//초기화
 	//MapMgr::GetInst()->Init();
@@ -23,7 +25,10 @@ void Core::Run()
 	while (true)
 	{
 		m_player.Update();
-		m_player.Render();
+		for (auto& i : bullets) {
+			i.Update();
+		}
+		MapManager::GetInst()->Render(m_player);
 		// Update()
 		// Render()
 	}

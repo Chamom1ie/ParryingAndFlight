@@ -1,0 +1,29 @@
+#pragma once
+#include"define.h"
+#include "Player.h"
+
+const int MAP_WIDTH = 21;
+const int MAP_HEIGHT = 20;
+class MapManager
+{
+private:
+	MapManager() = default;
+public:
+	void Init();
+	void Render(Player player);
+public:
+	static MapManager* GetInst()
+	{
+		if (m_pInst == nullptr)
+			m_pInst = new MapManager;
+		return m_pInst;
+	}
+	static void DestroyInst()
+	{
+		SAFE_DELETE(m_pInst);
+	}
+	char arrMap[MAP_HEIGHT][MAP_WIDTH]{};
+private:
+	static MapManager* m_pInst;
+};
+
