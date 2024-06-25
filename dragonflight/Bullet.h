@@ -5,12 +5,13 @@ class Bullet
 {
 private:
 	void Move();
+	void CheckHit();
 public:
 	void Update();
 	void Render();
 	void Init(Pos currentPos);
 	Pos _tPos, _newtpos;
-private:
 	bool isdie;
+	bool isEnemyBullet = false;
 };
 

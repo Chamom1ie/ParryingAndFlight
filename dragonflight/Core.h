@@ -3,6 +3,8 @@
 #include "Console.h"
 #include "define.h"
 #include "Bullet.h"
+#include "Enemy.h"
+#include "Player.h"
 
 class Core
 {
@@ -25,6 +27,12 @@ public:
 		SAFE_DELETE(m_pInst);
 	}
 	std::vector<Bullet> bullets = {};
+	std::vector<Enemy> enemies = {};
+	Player player = {};
+	int score = 0;
+	int time = 0;
+
+	
 private:
 	static Core* m_pInst;
 };

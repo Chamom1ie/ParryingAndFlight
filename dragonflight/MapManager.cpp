@@ -20,7 +20,7 @@ void MapManager::Init()
 	}
 }
 
-void MapManager::Render(Player player)
+void MapManager::Render()
 {
 	Console console;
 	console.Gotoxy(0, 0);
@@ -28,19 +28,52 @@ void MapManager::Render(Player player)
 	{
 		for (int j = 0; j < MAP_WIDTH; ++j)
 		{
-			if (player._tpos.x == j && player._tpos.y == i)
-				cout << "A";
+			Player curPlayer = Core::GetInst()->player;
+            std::vector<Bullet> curBullet = Core::GetInst()->bullets;
+
+
+			if (curPlayer._tpos.x == j && curPlayer._tpos.y == i && curPlayer._isHit)
+			{
+				console.SetColor((int)COLOR::RED);
+				cout << "A ";
+			}
+			else if (curPlayer._tpos.x == j && curPlayer._tpos.y == i && curPlayer._isparing)
+			{
+				console.SetColor((int)COLOR::YELLOW);
+				cout << "A ";
+			}
+			else if (curPlayer._tpos.x == j && curPlayer._tpos.y == i && curPlayer._isPowerUp)
+			{
+				console.SetColor((int)COLOR::SKYBLUE);
+				cout << "A ";
+			}
+			else if (curPlayer._tpos.x == j && curPlayer._tpos.y == i)
+				cout << "A ";
 			else if (MapManager::GetInst()->arrMap[i][j] == (char)OBJ_TYPE::End)
 				cout << "бс";
 			else if (MapManager::GetInst()->arrMap[i][j] == (char)OBJ_TYPE::Road)
 				cout << "  ";
+
 			for (auto& k : Core::GetInst()->bullets) {
-				if (k._tPos.x == j && k._tPos.y == i) {
+				if (k._tPos.x == j && k._tPos.y == i&&!k.isdie){
 					k.Render();
 				}
 			}
+
+			for (auto& e : Core::GetInst()->enemies) {
+				if (e._tpos.x == j && e._tpos.y == i && !e._isDie) {
+					e.Render();
+				}
+			}
+
+			console.SetColor((int)COLOR::WHITE);
 		}
 		cout << endl;
 	}
+}
+
+void MapManager::GameEnd()
+{
+
 }
 

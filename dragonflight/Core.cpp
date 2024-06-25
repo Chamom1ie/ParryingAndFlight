@@ -2,13 +2,14 @@
 #include "Pos.h"
 #include "Console.h"
 #include "TitleScene.h"
-#include "Player.h"
 #include "Enemy.h"
 #include "MapManager.h"
+#include "EnemySpawner.h"
+#include "UI.h";
 #include <vector>
 using std::vector;
 Core* Core::m_pInst = nullptr;
-Player m_player;
+
 //vector<Enemy> m_enemys;
 bool Core::Init() //여기서 게임 진행?
 {
@@ -19,21 +20,42 @@ bool Core::Init() //여기서 게임 진행?
 	//초기화
 	MapManager::GetInst()->Init();
 	//ObjectMgr::GetInst()->Init();
-	m_player.Init();
+	player.Init();
 	return true;
 }
 void Core::Update()
 {
-	m_player.Update();
-	for (auto& i : bullets) {
-		i.Update();
-	}
+    player.Update();
+    EnemySpawner::GetInst()->Update();
+    if (enemies.size() > 0)
+    {
+        auto new_end = std::remove_if(
+            enemies.begin(),
+            enemies.end(),
+            [](Enemy enemy) {return enemy._isDie; });
+        enemies.erase(new_end, enemies.end());
+    }
+    if (bullets.size() > 0)
+    {
+        auto new_end = std::remove_if(
+            bullets.begin(),
+            bullets.end(),
+            [](Bullet bullet) {return bullet.isdie; });
+        bullets.erase(new_end, bullets.end());
+    }
+
+    for (auto& i : bullets) {
+        i.Update();
+    }
+    for (auto& e : enemies) {
+        e.Update();
+    }
 }
 
 void Core::Render()
 {
-	MapManager::GetInst()->Render(m_player);
-	m_player.Render();
+	MapManager::GetInst()->Render();
+	UI::GetInst()->Render();
 }
 
 void Core::Run()

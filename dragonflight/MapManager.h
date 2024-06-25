@@ -15,7 +15,9 @@ private:
 	MapManager() = default;
 public:
 	void Init();
-	void Render(Player player);
+	void Render();
+	void GameEnd();
+	char arrMap[MAP_HEIGHT][MAP_WIDTH]{};
 public:
 	static MapManager* GetInst()
 	{
@@ -27,7 +29,6 @@ public:
 	{
 		SAFE_DELETE(m_pInst);
 	}
-	char arrMap[MAP_HEIGHT][MAP_WIDTH]{};
 private:
 	static MapManager* m_pInst;
 };
