@@ -1,18 +1,12 @@
-#include "Core.h"
-#include "Pos.h"
-#include "Console.h"
-#include "TitleScene.h"
-#include "Enemy.h"
-#include "MapManager.h"
-#include "EnemySpawner.h"
-#include "UI.h";
-#include <vector>
-using std::vector;
-Core* Core::m_pInst = nullptr;
-
+#include "Core.h";
+Core* Core::m_pInst = nullptr; 
+int secPrevTime;
+int secCurTime;
 //vector<Enemy> m_enemys;
 bool Core::Init() //여기서 게임 진행?
 {
+    srand(11123);
+    secPrevTime = clock();
 	Console m_console{};
 	TitleScene m_titleScene{};
 	m_console.Init();
@@ -64,6 +58,13 @@ void Core::Run()
 	{
 		Update();
 		Render();
+
+        secCurTime = clock();
+        if (secCurTime - secPrevTime >= 1000UL)
+        {
+            Core::GetInst()->time++;
+            secPrevTime = clock();
+        }
 	}
 }
 

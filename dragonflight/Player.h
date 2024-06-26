@@ -19,6 +19,6 @@ public:
 	int _life = 3,_hitTime = 10;
 	bool _isDie,_paringOn,_isparing,_isHit,_isPowerUp;
 private:
-	int cooldownStartTime, cooldownTime,paringStartTime,paringTime;
+	int cooldownStartTime, cooldownTime, paringStartTime, paringTime;
 };
 

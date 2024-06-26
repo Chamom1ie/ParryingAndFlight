@@ -1,9 +1,9 @@
-#include <Windows.h>
-#include <algorithm>
-#include "Player.h"
-#include "Bullet.h"
-#include "Core.h"
-#include "MapManager.h"
+#include <Windows.h>;
+#include <algorithm>;
+#include "Player.h";
+#include "Bullet.h";
+#include "Core.h";
+#include "MapManager.h";
 void Player::Movement()
 {
 	_newtpos = _tpos;
@@ -32,7 +32,7 @@ void Player::Fire()
 
 void Player::Paring()
 {
-	paringTime = clock(); 
+	paringTime = clock();
 	if (paringTime - paringStartTime >= 3000UL)
 	{
 		_isparing = false;
@@ -59,9 +59,9 @@ void Player::Hit()
 		_isHit = false;
 		--_life;
 		_hitTime = 10;
-		/*if (_life == 0) {
-			MapManager::
-		}*/
+		if (_life == 0) {
+			//MapManager::
+		}
 	}
 }
 
@@ -79,7 +79,7 @@ void Player::Update()
 	if (GetAsyncKeyState(VK_SPACE) & 0x8000) {
 		Fire();
 	}
-	if (GetAsyncKeyState(VK_UP) & 0x8000&&_paringOn) {
+	if (GetAsyncKeyState(VK_UP) & 0x8000 && _paringOn) {
 		_isparing = true;
 	}
 
@@ -88,7 +88,10 @@ void Player::Update()
 
 void Player::Render()
 {
-	cout << "A";
+	Console console;
+	COORD cursorPos = console.CursorPos();
+	console.Gotoxy(cursorPos.X - 1, cursorPos.Y);
+	cout << "бу";
 }
 
 void Player::Init()

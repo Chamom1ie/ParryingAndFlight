@@ -1,7 +1,10 @@
-#include <fstream>
-#include"Core.h"
-#include "MapManager.h"
-#include"Pos.h"
+ï»¿#include <fstream>;
+#include <conio.h>;
+#include <io.h>;
+#include <fcntl.h>;
+#include"Core.h";
+#include "MapManager.h";
+#include"Pos.h";
 MapManager* MapManager::m_pInst = nullptr;
 
 void MapManager::Init()
@@ -9,8 +12,8 @@ void MapManager::Init()
 	std::fstream readMap("stage.txt");
 	if (readMap.is_open()) {
 		for (int i = 0;i < MAP_HEIGHT;++i) {
-			//´Ù½Ã getlineÀ¸·Î ÆÄÀÏÀ» ÀÐÀ»¶§ ±âÁ¸²¨
-			//clearÇØÁà¾ßÇÔ. ¿©·¯ ½ºÅ×ÀÌÁöÀÏ ¶§
+			//ë‹¤ì‹œ getlineìœ¼ë¡œ íŒŒì¼ì„ ì½ì„ë•Œ ê¸°ì¡´êº¼
+			//clearí•´ì¤˜ì•¼í•¨. ì—¬ëŸ¬ ìŠ¤í…Œì´ì§€ì¼ ë•Œ
 			//readMap.clear();
 			readMap.getline(arrMap[i], MAP_WIDTH);
 			if (readMap.fail()) {
@@ -35,45 +38,41 @@ void MapManager::Render()
 			if (curPlayer._tpos.x == j && curPlayer._tpos.y == i && curPlayer._isHit)
 			{
 				console.SetColor((int)COLOR::RED);
-				cout << "A ";
+				cout << "â–²";
 			}
 			else if (curPlayer._tpos.x == j && curPlayer._tpos.y == i && curPlayer._isparing)
 			{
 				console.SetColor((int)COLOR::YELLOW);
-				cout << "A ";
+				cout << "â–²";
 			}
 			else if (curPlayer._tpos.x == j && curPlayer._tpos.y == i && curPlayer._isPowerUp)
 			{
 				console.SetColor((int)COLOR::SKYBLUE);
-				cout << "A ";
+				cout << "â–²";
 			}
 			else if (curPlayer._tpos.x == j && curPlayer._tpos.y == i)
-				cout << "A ";
+				cout << "â–²";
 			else if (MapManager::GetInst()->arrMap[i][j] == (char)OBJ_TYPE::End)
-				cout << "¡á";
+				cout << "â– ";
 			else if (MapManager::GetInst()->arrMap[i][j] == (char)OBJ_TYPE::Road)
-				cout << "  ";
-
+			{
+				int prevMode = _setmode(_fileno(stdout), _O_U16TEXT);
+				wcout << L"ã€€";
+				int curmode = _setmode(_fileno(stdout), prevMode);
+			}
 			for (auto& k : Core::GetInst()->bullets) {
 				if (k._tPos.x == j && k._tPos.y == i&&!k.isdie){
 					k.Render();
 				}
 			}
-
 			for (auto& e : Core::GetInst()->enemies) {
 				if (e._tpos.x == j && e._tpos.y == i && !e._isDie) {
 					e.Render();
 				}
 			}
-
 			console.SetColor((int)COLOR::WHITE);
 		}
 		cout << endl;
 	}
-}
-
-void MapManager::GameEnd()
-{
-
 }
 

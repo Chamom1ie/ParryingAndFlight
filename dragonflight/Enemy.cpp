@@ -1,9 +1,9 @@
-#include <Windows.h>
-#include <algorithm>
-#include "Enemy.h"
-#include "Bullet.h"
-#include "Core.h"
-#include "MapManager.h"
+#include <Windows.h>;
+#include <algorithm>;
+#include "Enemy.h";
+#include "Bullet.h";
+#include "Core.h";
+#include "MapManager.h";
 using std::vector;
 
 void Enemy::Movement()
@@ -29,6 +29,14 @@ void Enemy::Fire()
     _canShot = false;
 }
 
+void Enemy::Hit()
+{
+    _isDie = true;
+    int increaseValue = rand() % 3 + 1; //1 2 3
+    cout << increaseValue;
+    Core::GetInst()->score += increaseValue;
+}
+
 void Enemy::Update()
 {
     _tickCounter = !_tickCounter;
@@ -45,18 +53,16 @@ void Enemy::Update()
 
 void Enemy::Render()
 {
-    cout << "V ";
+    Console console;
+    COORD cursorPos = console.CursorPos();
+    console.Gotoxy(cursorPos.X - 2, cursorPos.Y);
+    cout << "¡ä";
 }
 
-void Enemy::Init()
+void Enemy::Init(int idx)
 {
-    _tpos.x = MAP_WIDTH / (Core::GetInst()->enemies.size() % 5 + 1);
+    _tpos.x = idx;
     _tpos.y = MAP_HEIGHT - MAP_HEIGHT + 1;
 
     Fire();
-}
-
-void Enemy::Hit()
-{
-
 }

@@ -1,5 +1,5 @@
-#include "MapManager.h"
-#include "Bullet.h"
+#include "MapManager.h";
+#include "Bullet.h";
 #include "Core.h";
 void Bullet::Move()
 {
@@ -44,14 +44,16 @@ void Bullet::CheckHit()
     }
     else 
     {
-        for (auto& enemys : Core::GetInst()->enemies) {
-            enemys.Hit();
+        for (auto& enemy : Core::GetInst()->enemies) {
+            if(enemy._tpos.x == _tPos.x && enemy._tpos.y == _tPos.y)
+                enemy.Hit();
         }
     }
 }
 
 void Bullet::Update()
 {
+    CheckHit();
     Move();
     CheckHit();
 }
@@ -61,7 +63,7 @@ void Bullet::Render()
     Console console;
     COORD cursorPos = console.CursorPos();
     console.Gotoxy(cursorPos.X - 2, cursorPos.Y);
-    cout << "* ";
+    cout << "£ª";
 }
 
 void Bullet::Init(Pos currentPos)

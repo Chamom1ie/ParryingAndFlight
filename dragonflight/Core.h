@@ -1,11 +1,17 @@
 #pragma once
 //게임매니저
-#include "Console.h"
-#include "define.h"
-#include "Bullet.h"
-#include "Enemy.h"
-#include "Player.h"
-
+#include "Console.h";
+#include "define.h";
+#include "Bullet.h";
+#include "Enemy.h";
+#include "Pos.h";
+#include "TitleScene.h";
+#include "Player.h";
+#include "MapManager.h";
+#include "EnemySpawner.h";
+#include "UI.h";
+#include <vector>;
+using std::vector;
 class Core
 {
 private:

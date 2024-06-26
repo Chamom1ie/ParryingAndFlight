@@ -1,10 +1,10 @@
-#include <iostream>
-#include <Windows.h>
-#include <fcntl.h>
-#include <conio.h>
-#include <io.h>
-#include "TitleScene.h"
-#include "console.h"
+#include <iostream>;
+#include <Windows.h>;
+#include <fcntl.h>;
+#include <conio.h>;
+#include <io.h>;
+#include "TitleScene.h";
+#include "console.h";
 using namespace std;
 
 string TitleText[3] = { "게임 시작", "게임 종료" };
@@ -13,19 +13,19 @@ void TitleScene::TitleRender() {
 	int prevMode = _setmode(_fileno(stdout), _O_U16TEXT);
 	COORD resolution = console.GetConsoleResolution();
 	wcout << L" _______                                          __                     " << endl;
-	wcout << L"/       \                                        /  |                    " << endl;
+	wcout << L"/       \\                                        /  |                    " << endl;
 	wcout << L"$$$$$$$  | ______    ______    ______   __    __ $$/  _______    ______  " << endl;
-	wcout << L"$$ |__$$ |/      \  /      \  /      \ /  |  /  |/  |/       \  /      \ " << endl;
+	wcout << L"$$ |__$$ |/      \\  /      \\  /      \\ /  |  /  |/  |/       \\  /      \\ " << endl;
 	wcout << L"$$    $$/ $$$$$$  |/$$$$$$  |/$$$$$$  |$$ |  $$ |$$ |$$$$$$$  |/$$$$$$  |" << endl;
 	wcout << L"$$$$$$$/  /    $$ |$$ |  $$/ $$ |  $$/ $$ |  $$ |$$ |$$ |  $$ |$$ |  $$ |" << endl;
-	wcout << L"$$ |     /$$$$$$$ |$$ |      $$ |      $$ \__$$ |$$ |$$ |  $$ |$$ \__$$ |" << endl;
+	wcout << L"$$ |     /$$$$$$$ |$$ |      $$ |      $$ \\__$$ |$$ |$$ |  $$ |$$ \\__$$ |" << endl;
 	wcout << L"$$ |     $$    $$ |$$ |      $$ |      $$    $$ |$$ |$$ |  $$ |$$    $$ |" << endl;
 	wcout << L"$$/       $$$$$$$/ $$/       $$/        $$$$$$$ |$$/ $$/   $$/  $$$$$$$ |" << endl;
-	wcout << L"                                        / \__$$ |               / \__$$ |" << endl;
+	wcout << L"                                        / \\__$$ |               / \\__$$ |" << endl;
 	wcout << L" __    __                               $$    $$/               $$    $$/ " << endl;
-	wcout << L"/  \  /  |                               $$$$$$/                 $$$$$$/  " << endl;
-	wcout << L"$$  \ $$ |																" << endl;
-	wcout << L"$$$  \$$ |																" << endl;
+	wcout << L"/  \\  /  |                               $$$$$$/                 $$$$$$/  " << endl;
+	wcout << L"$$  \\ $$ |																" << endl;
+	wcout << L"$$$  \\$$ |																" << endl;
 	wcout << L"$$$$  $$ |																" << endl;
 	wcout << L"$$ $$ $$ |																" << endl;
 	wcout << L"$$ |$$$$ |																" << endl;
@@ -35,13 +35,13 @@ void TitleScene::TitleRender() {
 	wcout << L" ________  __  __            __          __                              " << endl;
 	wcout << L"/        |/  |/  |          /  |        /  |                             " << endl;
 	wcout << L"$$$$$$$$/ $$ |$$/   ______  $$ |____   _$$ |_                            " << endl;
-	wcout << L"$$ |__    $$ |/  | /      \ $$      \ / $$   |                           " << endl;
+	wcout << L"$$ |__    $$ |/  | /      \\ $$      \\ / $$   |                           " << endl;
 	wcout << L"$$    |   $$ |$$ |/$$$$$$  |$$$$$$$  |$$$$$$/                            " << endl;
 	wcout << L"$$$$$/    $$ |$$ |$$ |  $$ |$$ |  $$ |  $$ | __                          " << endl;
-	wcout << L"$$ |      $$ |$$ |$$ \__$$ |$$ |  $$ |  $$ |/  |                         " << endl;
+	wcout << L"$$ |      $$ |$$ |$$ \\__$$ |$$ |  $$ |  $$ |/  |                         " << endl;
 	wcout << L"$$ |      $$ |$$ |$$    $$ |$$ |  $$ |  $$  $$/                          " << endl;
 	wcout << L"$$/       $$/ $$/  $$$$$$$ |$$/   $$/    $$$$/                           " << endl;
-	wcout << L"                  /  \__$$ |                                             " << endl;
+	wcout << L"                  /  \\__$$ |                                             " << endl;
 	wcout << L"                  $$    $$/                                              " << endl;
 	wcout << L"                   $$$$$$/                                               " << endl;
 	int curmode = _setmode(_fileno(stdout), prevMode);

@@ -11,7 +11,7 @@ public:
 	void Render();
 	void Init(Pos currentPos);
 	Pos _tPos, _newtpos;
-	bool isdie;
+	bool isdie = false;
 	bool isEnemyBullet = false;
 };
 

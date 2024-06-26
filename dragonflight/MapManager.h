@@ -16,7 +16,6 @@ private:
 public:
 	void Init();
 	void Render();
-	void GameEnd();
 	char arrMap[MAP_HEIGHT][MAP_WIDTH]{};
 public:
 	static MapManager* GetInst()

@@ -1,6 +1,6 @@
-#include "UI.h"
-#include "Console.h"
-#include "Core.h"
+#include "UI.h";
+#include "Console.h";
+#include "Core.h";
 UI* UI::m_pInst = nullptr;
 
 void UI::Description()
@@ -16,11 +16,11 @@ void UI::Score() {
 	int x = Resolution.X / 2;
 	int y = Resolution.Y / 6;
 
-	console.Gotoxy(x+3, y);
+	console.Gotoxy(x+4, y);
 	cout << "스코어 : " << Core::GetInst()->score<<endl;
-	console.Gotoxy(x+3, y + 1);
+	console.Gotoxy(x+4, y + 1);
 	cout << "시간 : " << Core::GetInst()->time<<endl;
-	console.Gotoxy(x+3, y + 2);
+	console.Gotoxy(x+4, y + 2);
 	cout << "생명 :" << Core::GetInst()->player._life<<endl;
 }
 

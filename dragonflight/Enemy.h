@@ -1,7 +1,7 @@
 #pragma once
-#include "Pos.h"
-#include"MapManager.h"
-#include <vector>
+#include "Pos.h";
+#include"MapManager.h";
+#include <vector>;
 
 class Enemy
 {
@@ -11,7 +11,7 @@ private:
 public:
     void Update();
     void Render();
-    void Init();
+    void Init(int idx);
     void Hit();
     Pos _tpos, _newtpos;
     bool _isDie = false;
