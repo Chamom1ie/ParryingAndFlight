@@ -1,10 +1,10 @@
-#include <iostream>;
-#include <Windows.h>;
-#include <fcntl.h>;
-#include <conio.h>;
-#include <io.h>;
-#include "TitleScene.h";
-#include "console.h";
+#include <iostream>
+#include <Windows.h>
+#include <fcntl.h>
+#include <conio.h>
+#include <io.h>
+#include "TitleScene.h"
+#include "console.h"
 using namespace std;
 
 string TitleText[3] = { "게임 시작", "게임 종료" };

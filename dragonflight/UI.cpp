@@ -1,30 +1,51 @@
-#include "UI.h";
-#include "Console.h";
-#include "Core.h";
+ï»¿#include "UI.h"
+#include "Console.h"
+#include "Core.h"
+#include <fcntl.h>
+#include <conio.h>
+#include <io.h>
+
 UI* UI::m_pInst = nullptr;
 
-void UI::Description()
-{
-	cout << "ÁÂ¿ì È­»ìÇ¥:ÁÂ¿ì ¿òÁ÷ÀÓ"<<endl;
-	cout << "Spacebar:ÃÑ½î±â"<<endl;
-	cout << "À§È­»ìÇ¥:ÆÐ¸µ" << endl;
-}
 
-void UI::Score() {
+void UI::MainUI() {
 	Console console;
 	COORD Resolution = console.GetConsoleResolution();
 	int x = Resolution.X / 2;
 	int y = Resolution.Y / 6;
 
-	console.Gotoxy(x+4, y);
-	cout << "½ºÄÚ¾î : " << Core::GetInst()->score<<endl;
-	console.Gotoxy(x+4, y + 1);
-	cout << "½Ã°£ : " << Core::GetInst()->time<<endl;
-	console.Gotoxy(x+4, y + 2);
-	cout << "»ý¸í :" << Core::GetInst()->player._life<<endl;
+	console.Gotoxy(x + 4, y - 4);
+	cout << "ì¢Œìš° í™”ì‚´í‘œ:ì¢Œìš° ì›€ì§ìž„" << endl;
+	console.Gotoxy(x + 4, y - 3);
+	cout << "Spacebar:ì´ì˜ê¸°" << endl;
+	console.Gotoxy(x + 4, y - 2);
+	cout << "ìœ„í™”ì‚´í‘œ:íŒ¨ë§" << endl;
+	console.Gotoxy(x + 4, y);
+	cout << "ìŠ¤ì½”ì–´ : " << Core::GetInst()->score << endl;
+	console.Gotoxy(x + 4, y + 1);
+	cout << "ì‹œê°„ : " << Core::GetInst()->time << endl;
+	console.Gotoxy(x + 4, y + 2);
+	cout << "ìƒëª… :" << Core::GetInst()->player._life << endl;
+	console.Gotoxy(x + 4, y + 3);
+	if (Core::GetInst()->player._paringOn)
+		cout << "íŒ¨ë§: " << "ON " << endl;
+	else
+		cout << "íŒ¨ë§: " << "OFF" << endl;
+
 }
 
-void UI::Render() {
-	Description();
-	Score();
+void UI::EndUI()
+{
+	
 }
+
+
+void UI::Render() {	
+	if (Core::GetInst()->player._isDie) {
+		EndUI();
+	}
+	else {
+		MainUI();
+	}
+}
+

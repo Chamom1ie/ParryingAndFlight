@@ -1,9 +1,9 @@
-#include <Windows.h>;
-#include <algorithm>;
-#include "Enemy.h";
-#include "Bullet.h";
-#include "Core.h";
-#include "MapManager.h";
+#include <Windows.h>
+#include <algorithm>
+#include "Enemy.h"
+#include "Bullet.h"
+#include "Core.h"
+#include "MapManager.h"
 using std::vector;
 
 void Enemy::Movement()
@@ -12,10 +12,19 @@ void Enemy::Movement()
     ++_newtpos.y;
 
     if (MapManager::GetInst()->arrMap[_newtpos.y][_newtpos.x]
-        != (char)OBJ_TYPE::End)
+        == (char)OBJ_TYPE::Road)
         _tpos = _newtpos;
-    else
+    else if (MapManager::GetInst()->arrMap[_newtpos.y][_newtpos.x]
+        == (char)OBJ_TYPE::Rampart)
     {
+        if (Core::GetInst()->ramparts[_newtpos.x]._isDie)
+        {
+            Core::GetInst()->player._isHit = true;
+        }
+        else
+        {
+            Core::GetInst()->ramparts[_newtpos.x].health--;
+        }
         _isDie = true;
     }
 }
@@ -59,9 +68,9 @@ void Enemy::Render()
     cout << "¡ä";
 }
 
-void Enemy::Init(int idx)
+void Enemy::Init(int posx)
 {
-    _tpos.x = idx;
+    _tpos.x = posx;
     _tpos.y = MAP_HEIGHT - MAP_HEIGHT + 1;
 
     Fire();

@@ -5,9 +5,9 @@ class UI
 private:
 	UI() = default;
 public:
-	void Description();
+	void EndUI();
 	void Render();
-	void Score();
+	void MainUI();
 public:
 	static UI* GetInst()
 	{

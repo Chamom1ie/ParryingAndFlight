@@ -1,6 +1,6 @@
-#include "MapManager.h";
-#include "Bullet.h";
-#include "Core.h";
+#include "MapManager.h"
+#include "Bullet.h"
+#include "Core.h"
 void Bullet::Move()
 {
     if (isdie) {
@@ -35,7 +35,7 @@ void Bullet::CheckHit()
 {
     if (isEnemyBullet)
     {
-        if (Core::GetInst()->player._tpos == _tPos&& Core::GetInst()->player._paringOn) {
+        if (Core::GetInst()->player._tpos.x - 1 <= _tPos.x && Core::GetInst()->player._tpos.x + 1 >= _tPos.x && Core::GetInst()->player._tpos.y - 1 == _tPos.y && Core::GetInst()->player._isparing) {
             isEnemyBullet = false;
         }
         else if (Core::GetInst()->player._tpos == _tPos) {
@@ -45,7 +45,7 @@ void Bullet::CheckHit()
     else 
     {
         for (auto& enemy : Core::GetInst()->enemies) {
-            if(enemy._tpos.x == _tPos.x && enemy._tpos.y == _tPos.y)
+            if (enemy._tpos.x == _tPos.x && enemy._tpos.y == _tPos.y)
                 enemy.Hit();
         }
     }

@@ -1,9 +1,9 @@
-#include <Windows.h>;
-#include <algorithm>;
-#include "Player.h";
-#include "Bullet.h";
-#include "Core.h";
-#include "MapManager.h";
+#include <Windows.h>
+#include <algorithm>
+#include "Player.h"
+#include "Bullet.h"
+#include "Core.h"
+#include "MapManager.h"
 void Player::Movement()
 {
 	_newtpos = _tpos;
@@ -33,7 +33,7 @@ void Player::Fire()
 void Player::Paring()
 {
 	paringTime = clock();
-	if (paringTime - paringStartTime >= 3000UL)
+	if (paringTime - paringStartTime >= 750UL)
 	{
 		_isparing = false;
 		cooldownStartTime = clock();
@@ -44,7 +44,7 @@ void Player::Paring()
 void Player::CoolDown()
 {
 	cooldownTime = clock();
-	if (cooldownTime - cooldownStartTime >= 6000UL)
+	if (cooldownTime - cooldownStartTime >= 1000UL)
 	{
 		_paringOn = true;
 	}
@@ -60,7 +60,7 @@ void Player::Hit()
 		--_life;
 		_hitTime = 10;
 		if (_life == 0) {
-			//MapManager::
+			_isDie = true;
 		}
 	}
 }
@@ -70,6 +70,7 @@ void Player::Update()
 	Movement();
 
 	Hit();
+
 	if (!_paringOn) {
 		CoolDown();
 	}
@@ -82,7 +83,6 @@ void Player::Update()
 	if (GetAsyncKeyState(VK_UP) & 0x8000 && _paringOn) {
 		_isparing = true;
 	}
-
 	Sleep(100);
 }
 
@@ -98,5 +98,4 @@ void Player::Init()
 {
 	_tpos.x = MAP_WIDTH / 2;
 	_tpos.y = MAP_HEIGHT-2;
-	_paringOn = true;
 }

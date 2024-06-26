@@ -136,8 +136,10 @@
     <ClCompile Include="EnemySpawner.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapManager.cpp" />
+    <ClCompile Include="mci.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Pos.cpp" />
+    <ClCompile Include="Rampart.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="UI.cpp" />
   </ItemGroup>
@@ -149,8 +151,10 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemySpawner.h" />
     <ClInclude Include="MapManager.h" />
+    <ClInclude Include="mci.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Pos.h" />
+    <ClInclude Include="Rampart.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="UI.h" />

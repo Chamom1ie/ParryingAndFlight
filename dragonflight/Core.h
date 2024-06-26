@@ -1,16 +1,16 @@
 #pragma once
 //게임매니저
-#include "Console.h";
-#include "define.h";
-#include "Bullet.h";
-#include "Enemy.h";
-#include "Pos.h";
-#include "TitleScene.h";
-#include "Player.h";
-#include "MapManager.h";
-#include "EnemySpawner.h";
-#include "UI.h";
-#include <vector>;
+#include "Console.h"
+#include "define.h"
+#include "Bullet.h"
+#include "Enemy.h"
+#include "Pos.h"
+#include "TitleScene.h"
+#include "Player.h"
+#include "MapManager.h"
+#include "EnemySpawner.h"
+#include "UI.h"
+#include <vector>
 using std::vector;
 class Core
 {
@@ -34,11 +34,10 @@ public:
 	}
 	std::vector<Bullet> bullets = {};
 	std::vector<Enemy> enemies = {};
+	std::vector<Rampart> ramparts{};
 	Player player = {};
 	int score = 0;
 	int time = 0;
-
-	
 private:
 	static Core* m_pInst;
 };

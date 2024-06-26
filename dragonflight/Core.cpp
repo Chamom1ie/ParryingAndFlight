@@ -1,7 +1,8 @@
-#include "Core.h";
+#include "Core.h"
 Core* Core::m_pInst = nullptr; 
 int secPrevTime;
 int secCurTime;
+Console console;
 //vector<Enemy> m_enemys;
 bool Core::Init() //여기서 게임 진행?
 {
@@ -37,10 +38,15 @@ void Core::Update()
             [](Bullet bullet) {return bullet.isdie; });
         bullets.erase(new_end, bullets.end());
     }
-
+    for (auto& r : ramparts)
+    {
+        if (r._isDie) continue;
+        if (r.health <= 0)
+            r._isDie = true;
+    }
     for (auto& i : bullets) {
         i.Update();
-    }
+     }
     for (auto& e : enemies) {
         e.Update();
     }
@@ -57,6 +63,7 @@ void Core::Run()
 	while (true)
 	{
 		Update();
+        console.Gotoxy(0,0);
 		Render();
 
         secCurTime = clock();

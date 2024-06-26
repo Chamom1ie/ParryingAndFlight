@@ -11,6 +11,7 @@ private:
 public:
     void Init();
     void Update();
+    void SpawnEnemy();
 public:
     static EnemySpawner* GetInst()
     {
