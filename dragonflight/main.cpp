@@ -1,4 +1,7 @@
 #include "Core.h"
+#include "UI.h"
+#include "EnemySpawner.h"
+#include "TitleScene.h"
 
 int main()
 {
@@ -10,5 +13,8 @@ int main()
 	}
 
 	Core::GetInst()->Run();
+	EnemySpawner::GetInst()->DestroyInst();
+	MapManager::GetInst()->DestroyInst();
+	UI::GetInst()->DestroyInst();
 	Core::GetInst()->DestroyInst();
 }

@@ -1,8 +1,10 @@
 #include "Core.h"
+#include "TitleScene.h"
+#include "EnemySpawner.h"
+#include "UI.h"
 Core* Core::m_pInst = nullptr; 
 int secPrevTime;
 int secCurTime;
-Console console;
 //vector<Enemy> m_enemys;
 bool Core::Init() //여기서 게임 진행?
 {
@@ -63,7 +65,6 @@ void Core::Run()
 	while (true)
 	{
 		Update();
-        console.Gotoxy(0,0);
 		Render();
 
         secCurTime = clock();

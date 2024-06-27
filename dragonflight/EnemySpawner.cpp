@@ -1,12 +1,6 @@
-#include "Core.h"
 #include "EnemySpawner.h"
-#include "Enemy.h"
-#include <vector>
+#include "Core.h"
 EnemySpawner* EnemySpawner::m_pInst = nullptr;
-using std::vector;
-int prevTime;
-int curTime;
-
 void EnemySpawner::Init()
 {
     prevTime = clock();
@@ -31,7 +25,10 @@ void EnemySpawner::Update()
 void EnemySpawner::SpawnEnemy()
 {
     int randNum = rand() % 17 + 1;
-    for (int i = randNum; i < randNum + 3; ++i)
+    int spawnCnt = rand() % 2 + 2;
+    if (randNum == 17 && spawnCnt > 2)
+        randNum--;
+    for (int i = randNum; i < randNum + spawnCnt; ++i)
     {
         Enemy newEnemy;
         newEnemy.Init(i);

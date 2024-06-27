@@ -29,6 +29,7 @@ public:
 	{
 		SAFE_DELETE(m_pInst);
 	}
+	int rampartColor[6]{ 0,4,6,2,1,15 };
 private:
 	static MapManager* m_pInst;
 };

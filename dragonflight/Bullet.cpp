@@ -1,5 +1,5 @@
-#include "MapManager.h"
 #include "Bullet.h"
+#include "MapManager.h"
 #include "Core.h"
 void Bullet::Move()
 {
@@ -11,10 +11,12 @@ void Bullet::Move()
         _newtpos = _tPos;
         ++_newtpos.y;
         if (MapManager::GetInst()->arrMap[_newtpos.y][_newtpos.x]
-            != (char)OBJ_TYPE::End)
+            == (char)OBJ_TYPE::Road)
             _tPos = _newtpos;
         else
+        {
             isdie = true;
+        }
     }
     else
     {
@@ -37,9 +39,12 @@ void Bullet::CheckHit()
     {
         if (Core::GetInst()->player._tpos.x - 1 <= _tPos.x && Core::GetInst()->player._tpos.x + 1 >= _tPos.x && Core::GetInst()->player._tpos.y - 1 == _tPos.y && Core::GetInst()->player._isparing) {
             isEnemyBullet = false;
+            ++Core::GetInst()->player._canFire;
         }
         else if (Core::GetInst()->player._tpos == _tPos) {
-            Core::GetInst()->player.Hit();
+            if (Core::GetInst()->player._isHit) return;
+            --Core::GetInst()->player._life;
+            Core::GetInst()->player._isHit = true;
         }
     }
     else 

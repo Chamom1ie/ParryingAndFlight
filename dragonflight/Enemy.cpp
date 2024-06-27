@@ -1,9 +1,8 @@
-#include <Windows.h>
 #include <algorithm>
 #include "Enemy.h"
 #include "Bullet.h"
-#include "Core.h"
 #include "MapManager.h"
+#include "Core.h"
 using std::vector;
 
 void Enemy::Movement()
@@ -19,6 +18,8 @@ void Enemy::Movement()
     {
         if (Core::GetInst()->ramparts[_newtpos.x]._isDie)
         {
+            if (Core::GetInst()->player._isHit) return;
+            --Core::GetInst()->player._life;
             Core::GetInst()->player._isHit = true;
         }
         else
@@ -42,7 +43,6 @@ void Enemy::Hit()
 {
     _isDie = true;
     int increaseValue = rand() % 3 + 1; //1 2 3
-    cout << increaseValue;
     Core::GetInst()->score += increaseValue;
 }
 

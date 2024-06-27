@@ -2,7 +2,7 @@
 class Rampart
 {
 public:
-	int health = 6;
+	int health = 5;
 	bool _isDie = false;
 };
 

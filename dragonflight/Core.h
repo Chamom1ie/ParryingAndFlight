@@ -4,12 +4,8 @@
 #include "define.h"
 #include "Bullet.h"
 #include "Enemy.h"
-#include "Pos.h"
-#include "TitleScene.h"
+#include "Rampart.h"
 #include "Player.h"
-#include "MapManager.h"
-#include "EnemySpawner.h"
-#include "UI.h"
 #include <vector>
 using std::vector;
 class Core
@@ -38,6 +34,8 @@ public:
 	Player player = {};
 	int score = 0;
 	int time = 0;
+
+	
 private:
 	static Core* m_pInst;
 };

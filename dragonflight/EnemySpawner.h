@@ -24,5 +24,7 @@ public:
         SAFE_DELETE(m_pInst);
     }
 private:
+    int curTime;
+    int prevTime;
     static EnemySpawner* m_pInst;
 };

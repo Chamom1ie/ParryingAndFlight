@@ -43,6 +43,7 @@ void MapManager::Render()
 {
 	if (Core::GetInst()->player._isDie) return;
 	Console console;
+	console.Gotoxy(0, 0);
 	for (int i = 0; i < MAP_HEIGHT; ++i)
 	{
 		for (int j = 0; j < MAP_WIDTH; ++j)
@@ -83,7 +84,7 @@ void MapManager::Render()
 				}
 				else
 				{
-					console.SetColor(Core::GetInst()->ramparts[j].health);
+					console.SetColor(rampartColor[Core::GetInst()->ramparts[j].health]);
 					cout << "■";
 					console.SetColor((int)COLOR::WHITE);
 				}

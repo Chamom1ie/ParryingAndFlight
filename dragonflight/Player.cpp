@@ -1,9 +1,9 @@
-#include <Windows.h>
 #include <algorithm>
+#include "define.h"
+#include "MapManager.h"
 #include "Player.h"
 #include "Bullet.h"
 #include "Core.h"
-#include "MapManager.h"
 void Player::Movement()
 {
 	_newtpos = _tpos;
@@ -25,6 +25,8 @@ void Player::Movement()
 
 void Player::Fire()
 {
+	if (_canFire == 0) return;
+	--_canFire;
 	Bullet newBullet;
 	newBullet.Init(_tpos);
 	Core::GetInst()->bullets.push_back(newBullet);
@@ -52,16 +54,13 @@ void Player::CoolDown()
 
 void Player::Hit()
 {
-	if (!_isHit) return;
-
+	if (_life == 0) {
+		_isDie = true;
+	}
 	--_hitTime;
 	if (_hitTime <= 0) {
 		_isHit = false;
-		--_life;
 		_hitTime = 10;
-		if (_life == 0) {
-			_isDie = true;
-		}
 	}
 }
 
@@ -83,7 +82,7 @@ void Player::Update()
 	if (GetAsyncKeyState(VK_UP) & 0x8000 && _paringOn) {
 		_isparing = true;
 	}
-	Sleep(100);
+	Sleep(75);
 }
 
 void Player::Render()
