@@ -8,6 +8,7 @@ public:
 	void EndUI();
 	void Render();
 	void MainUI();
+	void GameOver();
 public:
 	static UI* GetInst()
 	{
@@ -19,6 +20,7 @@ public:
 	{
 		SAFE_DELETE(m_pInst);
 	}
+	bool _flag = false;
 private:
 	static UI* m_pInst;
 };

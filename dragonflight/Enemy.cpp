@@ -42,6 +42,8 @@ void Enemy::Fire()
 void Enemy::Hit()
 {
     _isDie = true;
+    //mci mci;
+    //mci.PlayEffect(L"explosion.wav");
     int increaseValue = rand() % 3 + 1; //1 2 3
     Core::GetInst()->score += increaseValue;
 }

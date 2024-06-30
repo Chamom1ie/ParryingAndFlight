@@ -2,13 +2,15 @@
 #include "TitleScene.h"
 #include "EnemySpawner.h"
 #include "UI.h"
+#include <ctime>
+
 Core* Core::m_pInst = nullptr; 
 int secPrevTime;
 int secCurTime;
 //vector<Enemy> m_enemys;
 bool Core::Init() //여기서 게임 진행?
 {
-    srand(11123);
+    srand((unsigned int)std::time(NULL));
     secPrevTime = clock();
 	Console m_console{};
 	TitleScene m_titleScene{};
