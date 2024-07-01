@@ -62,6 +62,11 @@ void MapManager::Render()
 				console.SetColor((int)COLOR::YELLOW);
 				cout << "▲";
 			}
+			else if (curPlayer._tpos.x == j && curPlayer._tpos.y == i && curPlayer._isPowerUp)
+			{
+				console.SetColor((int)COLOR::SKYBLUE);
+				cout << "▲";
+			}
 			else if (curPlayer._tpos.x == j && curPlayer._tpos.y == i)
 				cout << "▲";
 			else if (MapManager::GetInst()->arrMap[i][j] == (char)OBJ_TYPE::End)

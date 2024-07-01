@@ -6,7 +6,6 @@
 #include "Enemy.h"
 #include "Rampart.h"
 #include "Player.h"
-#include "mci.h"
 #include <vector>
 using std::vector;
 class Core

@@ -26,8 +26,6 @@ void Player::Movement()
 void Player::Fire()
 {
 	if (_canFire == 0) return;
-	//mci mci;
-	//mci.PlayEffect(L"laserShoot.wav");
 	--_canFire;
 	Bullet newBullet;
 	newBullet.Init(_tpos);
@@ -78,13 +76,12 @@ void Player::Update()
 	if (_isparing) {
 		Paring();
 	}
-	if (GetAsyncKeyState(VK_SPACE) & 0x8000 && _paringOn) {
-		_isparing = true;
-	}
-	if (GetAsyncKeyState(VK_UP) & 0x8000 ) {
+	if (GetAsyncKeyState(VK_SPACE) & 0x8000) {
 		Fire();
 	}
-	
+	if (GetAsyncKeyState(VK_UP) & 0x8000 && _paringOn) {
+		_isparing = true;
+	}
 	Sleep(75);
 }
 

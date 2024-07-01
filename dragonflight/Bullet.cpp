@@ -21,6 +21,7 @@ void Bullet::Move()
     else
     {
         _newtpos = _tPos;
+
         --_newtpos.y;
 
         if (_newtpos.y == 0) {
@@ -59,7 +60,7 @@ void Bullet::Update()
 {
     CheckHit();
     Move();
-    CheckHit(); 
+    CheckHit();
 }
 
 void Bullet::Render()
